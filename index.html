@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Ez-maintenance : A Website Maintenance Page For sites with front-controller">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Ez-maintenance</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/ronisaha/ez-maintenance">View on GitHub</a>
+
+          <h1 id="project_title">Ez-maintenance</h1>
+          <h2 id="project_tagline">A Website Maintenance Page For sites with front-controller</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/ronisaha/ez-maintenance/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/ronisaha/ez-maintenance/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a id="easy-maintenance" class="anchor" href="#easy-maintenance" aria-hidden="true"><span class="octicon octicon-link"></span></a>Easy Maintenance</h1>
+
+<p>Utility Library to handle site maintenance situation</p>
+
+<h2>
+<a id="key-features" class="anchor" href="#key-features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Key Features</h2>
+
+<ul>
+<li>Easy to use</li>
+<li>Highly Customizable</li>
+</ul>
+
+<h2>
+<a id="installationusage" class="anchor" href="#installationusage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation/Usage</h2>
+
+<p>If you're using Composer to manage dependencies, you can include the following
+in your composer.json file:</p>
+
+<pre><code>"require": {
+    "ronisaha/ez-maintenance": "dev-master"
+}
+</code></pre>
+
+<p>Then, after running <code>composer update</code> or <code>php composer.phar update</code>, you can
+load the class using Composer's autoloading:</p>
+
+<div class="highlight highlight-php"><pre><span class="pl-s1"><span class="pl-k">require</span> <span class="pl-s"><span class="pl-pds">'</span>vendor/autoload.php<span class="pl-pds">'</span></span>;</span></pre></div>
+
+<p>Otherwise, you can simply require the given <code>autoload.php</code> file:</p>
+
+<div class="highlight highlight-php"><pre><span class="pl-s1"><span class="pl-k">require_once</span> <span class="pl-s"><span class="pl-pds">'</span>PATH_TO_LIBRARY/autoload.php<span class="pl-pds">'</span></span>;</span>
+<span class="pl-s1"></span></pre></div>
+
+<p>Then you can just call <code>EzMaintenance\Worker::watch()</code> In your <code>index.php</code> (see the <a href="https://github.com/ronisaha/ez-maintenance/blob/master/example/index.php">example</a>)</p>
+
+<h2>
+<a id="different-adapters-to-check-maintenance-mode" class="anchor" href="#different-adapters-to-check-maintenance-mode" aria-hidden="true"><span class="octicon octicon-link"></span></a>Different Adapters to check maintenance mode</h2>
+
+<h5>
+<a id="file-adapters" class="anchor" href="#file-adapters" aria-hidden="true"><span class="octicon octicon-link"></span></a>File Adapters</h5>
+
+<p>This is the default adapter. it checks for a specific file if exist or not. default path is <em>down</em>. For the following implementation
+you will be shown maintenance page if there is a file exists named <code>maintenance.enable</code></p>
+
+<div class="highlight highlight-php"><pre><span class="pl-pse">&lt;?php</span><span class="pl-s1"></span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-c1">EzMaintenance\</span><span class="pl-c1">Worker</span><span class="pl-k">::</span>watch(<span class="pl-s"><span class="pl-pds">'</span>file<span class="pl-pds">'</span></span>, <span class="pl-c1">array</span>(</span>
+<span class="pl-s1">        <span class="pl-s"><span class="pl-pds">'</span>path<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-s"><span class="pl-pds">'</span>maintenance.enable<span class="pl-pds">'</span></span></span>
+<span class="pl-s1">));</span>
+<span class="pl-s1"></span>
+<span class="pl-s1"></span></pre></div>
+
+<h5>
+<a id="env-adapters" class="anchor" href="#env-adapters" aria-hidden="true"><span class="octicon octicon-link"></span></a>Env Adapters</h5>
+
+<p>Using this adapter you can watch over existence of an environment variable. The maintenance page will be shown if the environment
+ variable is present with specific value.</p>
+
+<div class="highlight highlight-php"><pre><span class="pl-pse">&lt;?php</span><span class="pl-s1"></span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-c1">EzMaintenance\</span><span class="pl-c1">Worker</span><span class="pl-k">::</span>watch(<span class="pl-s"><span class="pl-pds">'</span>env<span class="pl-pds">'</span></span>, <span class="pl-c1">array</span>(</span>
+<span class="pl-s1">        <span class="pl-s"><span class="pl-pds">'</span>var_name<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-s"><span class="pl-pds">'</span>APPLICATION_ENV<span class="pl-pds">'</span></span>,</span>
+<span class="pl-s1">        <span class="pl-s"><span class="pl-pds">'</span>check_value<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-s"><span class="pl-pds">'</span>down<span class="pl-pds">'</span></span></span>
+<span class="pl-s1">));</span>
+<span class="pl-s1"></span>
+<span class="pl-s1"></span></pre></div>
+
+<h5>
+<a id="const-adapters" class="anchor" href="#const-adapters" aria-hidden="true"><span class="octicon octicon-link"></span></a>Const Adapters</h5>
+
+<p>This is same ad the env adapter. Only difference is it will check for a php constant instead of environment variable.</p>
+
+<div class="highlight highlight-php"><pre><span class="pl-pse">&lt;?php</span><span class="pl-s1"></span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-c1">EzMaintenance\</span><span class="pl-c1">Worker</span><span class="pl-k">::</span>watch(<span class="pl-s"><span class="pl-pds">'</span>const<span class="pl-pds">'</span></span>, <span class="pl-c1">array</span>(</span>
+<span class="pl-s1">        <span class="pl-s"><span class="pl-pds">'</span>var_name<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-s"><span class="pl-pds">'</span>APPLICATION_ENV<span class="pl-pds">'</span></span>,</span>
+<span class="pl-s1">        <span class="pl-s"><span class="pl-pds">'</span>check_value<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-s"><span class="pl-pds">'</span>down<span class="pl-pds">'</span></span></span>
+<span class="pl-s1">));</span>
+<span class="pl-s1"></span></pre></div>
+
+<h5>
+<a id="custom-adapters" class="anchor" href="#custom-adapters" aria-hidden="true"><span class="octicon octicon-link"></span></a>Custom Adapters</h5>
+
+<p>You can define your own adapter by implementing the <code>EzMaintenance\Adapter\AdapterInterface</code></p>
+
+<h3>
+<a id="common-options" class="anchor" href="#common-options" aria-hidden="true"><span class="octicon octicon-link"></span></a>Common options</h3>
+
+<p>Following options are available to customize the behaviour of the library</p>
+
+<h5>
+<a id="interval" class="anchor" href="#interval" aria-hidden="true"><span class="octicon octicon-link"></span></a>interval</h5>
+
+<p>This option state the interval in second, the system will check for the site status with this interval. default is 5 second.</p>
+
+<h5>
+<a id="template" class="anchor" href="#template" aria-hidden="true"><span class="octicon octicon-link"></span></a>template</h5>
+
+<p>You can provide the builtin template name(simple, game, clock) or path to your own template file. All the options will also be available in your template.
+You should <code>echo $javascript</code> in your template file to enable auto status check.</p>
+
+<div class="highlight highlight-php"><pre><span class="pl-pse">&lt;?php</span><span class="pl-s1"></span>
+<span class="pl-s1">    <span class="pl-c1">echo</span> <span class="pl-smi">$javascript</span>;</span>
+<span class="pl-s1"></span><span class="pl-pse"><span class="pl-s1">?</span>&gt;</span></pre></div>
+
+<h5>
+<a id="msg" class="anchor" href="#msg" aria-hidden="true"><span class="octicon octicon-link"></span></a>msg</h5>
+
+<p>If you are using any of the default template, you can customize the message using this option.</p>
+
+<h2>
+<a id="contributing-to-library" class="anchor" href="#contributing-to-library" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contributing to Library</h2>
+
+<p>If you find a bug or want to add a feature to EzMaintenance, great! In order to make it easier and quicker for me to verify and merge changes in, it would be amazing if you could follow these few basic steps:</p>
+
+<ol>
+<li>Fork the project.</li>
+<li><strong>Branch out into a new branch. <code>git checkout -b name_of_new_feature_or_bug</code></strong></li>
+<li>Make your feature addition or bug fix.</li>
+<li>Commit.</li>
+<li>Send me a pull request!</li>
+</ol>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Ez-maintenance maintained by <a href="https://github.com/ronisaha">ronisaha</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
