@@ -16,14 +16,14 @@
     <!-- HEADER -->
     <div id="header_wrap" class="outer">
         <header class="inner">
-          <a id="forkme_banner" href="https://github.com/ronisaha/ez-maintenance">View on GitHub</a>
+          <a id="forkme_banner" href="https://github.com/xiidea/ez-maintenance">View on GitHub</a>
 
           <h1 id="project_title">Ez-maintenance</h1>
           <h2 id="project_tagline">A Website Maintenance Page For sites with front-controller</h2>
 
             <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/ronisaha/ez-maintenance/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/ronisaha/ez-maintenance/tarball/master">Download this project as a tar.gz file</a>
+              <a class="zip_download_link" href="https://github.com/xiidea/ez-maintenance/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/xiidea/ez-maintenance/tarball/master">Download this project as a tar.gz file</a>
             </section>
         </header>
     </div>
@@ -51,7 +51,7 @@
 in your composer.json file:</p>
 
 <pre><code>"require": {
-    "ronisaha/ez-maintenance": "dev-master"
+    "xiidea/ez-maintenance": "dev-master"
 }
 </code></pre>
 
@@ -65,10 +65,12 @@ load the class using Composer's autoloading:</p>
 <div class="highlight highlight-php"><pre><span class="pl-s1"><span class="pl-k">require_once</span> <span class="pl-s"><span class="pl-pds">'</span>PATH_TO_LIBRARY/autoload.php<span class="pl-pds">'</span></span>;</span>
 <span class="pl-s1"></span></pre></div>
 
-<p>Then you can just call <code>EzMaintenance\Worker::watch()</code> In your <code>index.php</code> (see the <a href="https://github.com/ronisaha/ez-maintenance/blob/master/example/index.php">example</a>)</p>
+<p>Then you can just call <code>EzMaintenance\Worker::watch()</code> In your <code>index.php</code> (see the <a href="https://github.com/xiidea/ez-maintenance/blob/master/example/index.php">example</a>)</p>
 
 <h2>
 <a id="different-adapters-to-check-maintenance-mode" class="anchor" href="#different-adapters-to-check-maintenance-mode" aria-hidden="true"><span class="octicon octicon-link"></span></a>Different Adapters to check maintenance mode</h2>
+
+<p>Use adapter to detect if we need to serve the maintenance page or not. 3 Types of adapter provided. You can also define your own adapter.</p>
 
 <h5>
 <a id="file-adapters" class="anchor" href="#file-adapters" aria-hidden="true"><span class="octicon octicon-link"></span></a>File Adapters</h5>
@@ -128,9 +130,20 @@ you will be shown maintenance page if there is a file exists named <code>mainten
 <p>This option state the interval in second, the system will check for the site status with this interval. default is 5 second.</p>
 
 <h5>
+<a id="override_key" class="anchor" href="#override_key" aria-hidden="true"><span class="octicon octicon-link"></span></a>override_key</h5>
+
+<p>You can configure a key to override the maintenance mode. This is helpful t test your site normally while others will see maintenance page.
+To browse the page in maintenance mode, you just need to pass the override key as query parameter like: `<a href="http://yourdomain.com/?key=%7Boverride_key%7D">http://yourdomain.com/?key={override_key}</a></p>
+
+<h5>
+<a id="inverse" class="anchor" href="#inverse" aria-hidden="true"><span class="octicon octicon-link"></span></a>inverse</h5>
+
+<p>If you want to enable maintenance mode when adapter return false, you can set <code>inverse = true</code>.</p>
+
+<h5>
 <a id="template" class="anchor" href="#template" aria-hidden="true"><span class="octicon octicon-link"></span></a>template</h5>
 
-<p>You can provide the builtin template name(simple, game, clock) or path to your own template file. All the options will also be available in your template.
+<p>You can provide the built-in template name(simple, game, clock) or path to your own template file. All the options will also be available in your template.
 You should <code>echo $javascript</code> in your template file to enable auto status check.</p>
 
 <div class="highlight highlight-php"><pre><span class="pl-pse">&lt;?php</span><span class="pl-s1"></span>
@@ -160,7 +173,7 @@ You should <code>echo $javascript</code> in your template file to enable auto st
     <!-- FOOTER  -->
     <div id="footer_wrap" class="outer">
       <footer class="inner">
-        <p class="copyright">Ez-maintenance maintained by <a href="https://github.com/ronisaha">ronisaha</a></p>
+        <p class="copyright">Ez-maintenance maintained by <a href="https://github.com/xiidea">xiidea</a></p>
         <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
       </footer>
     </div>
