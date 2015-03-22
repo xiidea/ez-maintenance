@@ -62,6 +62,7 @@ class Worker {
                 'interval' => 5,
                 'template' => 'simple',
                 'msg' => 'Our site is currently undergoing maintenance!',
+                'title' => 'Under maintenance!',
             ),$options);
     }
 }

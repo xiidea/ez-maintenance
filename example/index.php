@@ -1,8 +1,9 @@
 <?php
 
 include_once("../autoload.php");
+define('APPLICATION_ENV', 'down');
 
-EzMaintenance\Worker::watch('env', array(
+EzMaintenance\Worker::watch('const', array(
         'template' => 'clock'
     ));
 
