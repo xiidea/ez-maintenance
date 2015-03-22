@@ -14,7 +14,7 @@ If you're using Composer to manage dependencies, you can include the following
 in your composer.json file:
 
     "require": {
-        "ronisaha/ez-maintenance": "dev-master"
+        "xiidea/ez-maintenance": "dev-master"
     }
 
 Then, after running `composer update` or `php composer.phar update`, you can
@@ -31,10 +31,12 @@ require_once 'PATH_TO_LIBRARY/autoload.php';
 
 ```
 
-Then you can just call `EzMaintenance\Worker::watch()` In your `index.php` (see the [example](https://github.com/ronisaha/ez-maintenance/blob/master/example/index.php))
+Then you can just call `EzMaintenance\Worker::watch()` In your `index.php` (see the [example](https://github.com/xiidea/ez-maintenance/blob/master/example/index.php))
 
 
 ## Different Adapters to check maintenance mode
+
+Use adapter to detect if we need to serve the maintenance page or not. 3 Types of adapter provided. You can also define your own adapter.
 
 ##### File Adapters
 
@@ -94,9 +96,18 @@ Following options are available to customize the behaviour of the library
 
 This option state the interval in second, the system will check for the site status with this interval. default is 5 second.
 
+##### override_key
+
+You can configure a key to override the maintenance mode. This is helpful t test your site normally while others will see maintenance page.
+To browse the page in maintenance mode, you just need to pass the override key as query parameter like: `http://yourdomain.com/?key={override_key}`
+
+##### inverse
+
+If you want to enable maintenance mode when adapter return false, you can set `inverse = true`.
+
 ##### template
 
-You can provide the builtin template name(simple, game, clock) or path to your own template file. All the options will also be available in your template.
+You can provide the built-in template name(simple, game, clock) or path to your own template file. All the options will also be available in your template.
 You should `echo $javascript` in your template file to enable auto status check.
 
 ```php

@@ -1,10 +1,10 @@
 {
-    "name": "ronisaha/ez-maintenance",
+    "name": "xiidea/ez-maintenance",
     "type": "library",
     "description": "A handy library to handle site maintenance situation",
     "keywords": ["Under Maintenance", "Service Unavailable", "Easy"],
     "license": "MIT",
-    "homepage": "http://ronisaha.github.io/ez-maintenance/",
+    "homepage": "http://xiidea.github.io/ez-maintenance/",
     "authors": [
         {
             "name": "Roni Saha",
@@ -13,8 +13,8 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/ronisaha/ez-maintenance//issues",
-        "source": "https://github.com/ronisaha/ez-maintenance/"
+        "issues": "https://github.com/xiidea/ez-maintenance//issues",
+        "source": "https://github.com/xiidea/ez-maintenance/"
     },
     "require": {
         "php": ">=5.3"

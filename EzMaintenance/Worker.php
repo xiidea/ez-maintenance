@@ -3,21 +3,20 @@
 /*
  * This file is part of the EzMaintenance package.
  *
- * Copyright (c) 2015 Roni Saha
+ * (c) Xiidea <http://www.xiidea.net>
  *
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
  */
 
-
 namespace EzMaintenance;
 
-
 use EzMaintenance\Adapter\AdapterInterface;
+use EzMaintenance\Helper\Security;
 use EzMaintenance\Helper\Template;
 
-class Worker {
-
+class Worker
+{
     /** @var AdapterInterface[] $adapters */
     private static $adapters = array(
         'file' => '\EzMaintenance\Adapter\FileAdapter',
@@ -27,8 +26,13 @@ class Worker {
 
     public static function watch($adapter = 'file', $options = array()){
         $adapterInterface = self::getAdapter($adapter);
+        $options = self::getOptions($options);
 
-        if($adapterInterface::isMaintenanceModeEnabled($options))
+        if($options['override_key'] && Security::hasValidGatePass($options['override_key'])) {
+            return;
+        }
+
+        if($adapterInterface::isTrue($options) xor $options['inverse'])
         {
             self::showMaintenancePage($options);
         }
@@ -52,7 +56,6 @@ class Worker {
 
     private static function showMaintenancePage($options)
     {
-        $options = self::getOptions($options);
         Template::load($options);
         exit;
     }
@@ -60,9 +63,10 @@ class Worker {
     protected  static function getOptions(array $options) {
         return array_merge(array(
                 'interval' => 5,
+                'inverse' => false,
+                'override_key' => false,
                 'template' => 'simple',
                 'msg' => 'Our site is currently undergoing maintenance!',
-                'title' => 'Under maintenance!',
             ),$options);
     }
 }

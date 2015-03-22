@@ -1,7 +1,7 @@
 <?php
-     
+
 /*
- * This file is part of the ez-maintenance package.
+ * This file is part of the EzMaintenance package.
  *
  * (c) Xiidea <http://www.xiidea.net>
  *
@@ -9,13 +9,11 @@
  * with this source code in the file LICENSE.
  */
  
-
 namespace EzMaintenance\Adapter;
-
 
 abstract class BaseVariableAdapter implements AdapterInterface, VariableAdapterInterface
 {
-    public static function isMaintenanceModeEnabled(array $options = array())
+    public static function isTrue(array $options = array())
     {
         $options = self::getOptions($options);
 

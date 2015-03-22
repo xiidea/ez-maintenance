@@ -3,7 +3,7 @@
 <head lang="en">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="robots" content="noindex,nofollow"/>
-    <title><?php echo $title ?></title>
+    <title> Under maintenance </title>
     <style type="text/css">
         body {text-align:center;}
         canvas { border:5px dotted #ccc; }

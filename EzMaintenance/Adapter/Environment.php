@@ -1,7 +1,7 @@
 <?php
-     
+
 /*
- * This file is part of the ez-maintenance package.
+ * This file is part of the EzMaintenance package.
  *
  * (c) Xiidea <http://www.xiidea.net>
  *
