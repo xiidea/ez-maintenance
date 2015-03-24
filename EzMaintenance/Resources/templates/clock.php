@@ -42,7 +42,7 @@
     </style>
 </head>
 <body>
-<time id="currtime"></time>
+<time title="<?php echo $title ?>" id="currtime"></time>
 <?php echo $javascript ?>
 <script>
     var currentTime = document.getElementById("currtime");

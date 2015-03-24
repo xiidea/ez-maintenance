@@ -67,6 +67,7 @@ class Worker
                 'override_key' => false,
                 'template' => 'simple',
                 'msg' => 'Our site is currently undergoing maintenance!',
+                'title' => 'Under maintenance!',
             ),$options);
     }
 }

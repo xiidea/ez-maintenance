@@ -3,13 +3,16 @@
 <head lang="en">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="robots" content="noindex,nofollow"/>
-    <title> Under maintenance </title>
+    <title><?php echo $title ?></title>
     <style type="text/css">
         body {text-align:center;}
         canvas { border:5px dotted #ccc; }
         h1 { font-size:50px; text-align: center; margin: 0; padding-bottom: 25px;}
     </style>
     <script type="text/javascript">
+
+        //src: http://www.9lessons.info/2011/08/html5-snake-game.html
+
         function play_game()
         {
             var level = 160; // Game level, by decreasing will speed up
